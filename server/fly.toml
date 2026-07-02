@@ -1,0 +1,29 @@
+# Rename `app` to your Fly app name before first deploy.
+app = "familiarscall-daily"
+primary_region = "iad"
+
+[build]
+  dockerfile = "server/Dockerfile"
+
+[env]
+  FC_DATA_DIR = "/app/data"
+  FC_DB_PATH = "/data/familiarscall.db"
+  PORT = "8080"
+
+[[mounts]]
+  source = "fc_daily_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    grace_period = "10s"
+    interval = "30s"
+    method = "GET"
+    timeout = "5s"
+    path = "/health"

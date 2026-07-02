@@ -1,0 +1,23 @@
+{
+  "dust_reward": 150,
+  "easy_ritual": "win_2_battles",
+  "school_rotation": [
+    { "id": "win_field_pyromancy", "school": "pyromancy" },
+    { "id": "win_field_nature", "school": "nature" },
+    { "id": "win_field_necromancy", "school": "necromancy" },
+    { "id": "win_field_illusion", "school": "illusion" },
+    { "id": "win_field_military", "school": "military" }
+  ],
+  "varied_pool": [
+    "win_taunt_familiar",
+    "win_no_losses",
+    "use_clash_ticket",
+    "win_clash",
+    "win_dual_synergy",
+    "open_page",
+    "level_up_familiar",
+    "win_with_burn",
+    "win_heal_lifesteal",
+    "win_death_trigger"
+  ]
+}

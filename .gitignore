@@ -1,0 +1,25 @@
+# Godot 4
+.godot/
+*.import
+export_presets.cfg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+*.swp
+
+# Python / daily API
+server/.venv/
+server/**/*.db
+ 
+# Python bytecode 
+__pycache__/ 
+*.pyc 
+ 
+# Local secrets 
+.env 
+.env.* 
+!.env.example

@@ -1,0 +1,5 @@
+{
+  "enabled": true,
+  "supabase_url": "https://YOUR_PROJECT.supabase.co",
+  "supabase_anon_key": "YOUR_ANON_PUBLIC_KEY"
+}

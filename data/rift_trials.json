@@ -1,0 +1,79 @@
+{
+  "trials": [
+    {
+      "id": "trial_1",
+      "name": "Ember Initiates",
+      "description": "A squad of fledgling pyromancers tests your coven.",
+      "enemy_squad": [
+        { "id": "ember_pup", "row": "front" },
+        { "id": "scorch_imp", "row": "front" },
+        { "id": "cinderwing_drake", "row": "front" },
+        { "id": "flareling", "row": "back" },
+        { "id": "ashwing_bat", "row": "back" },
+        { "id": "salamander_adept", "row": "back" }
+      ],
+      "dust_reward": 60,
+      "required_cleared": []
+    },
+    {
+      "id": "trial_2",
+      "name": "Thornwall",
+      "description": "Nature tanks hold the line.",
+      "enemy_squad": [
+        { "id": "pebblegrove_turtle", "row": "front" },
+        { "id": "thornback_stag", "row": "front" },
+        { "id": "bramble_hare", "row": "front" },
+        { "id": "mosshollow_sprite", "row": "back" },
+        { "id": "fernling", "row": "back" },
+        { "id": "willowmend_druid", "row": "back" }
+      ],
+      "dust_reward": 80,
+      "required_cleared": ["trial_1"]
+    },
+    {
+      "id": "trial_3",
+      "name": "Crypt Patrol",
+      "description": "Necromancy familiars drain your front line.",
+      "enemy_squad": [
+        { "id": "bonewisp", "row": "front" },
+        { "id": "grimrat", "row": "front" },
+        { "id": "wraithling_swarm", "row": "front" },
+        { "id": "crypt_acolyte", "row": "back" },
+        { "id": "ashen_crow", "row": "back" },
+        { "id": "hollow_acolyte", "row": "back" }
+      ],
+      "dust_reward": 100,
+      "required_cleared": ["trial_2"]
+    },
+    {
+      "id": "trial_4",
+      "name": "Mirage Company",
+      "description": "Illusion disruptors dodge and confuse.",
+      "enemy_squad": [
+        { "id": "mirage_kit", "row": "front" },
+        { "id": "fogveil_cat", "row": "front" },
+        { "id": "prism_fox", "row": "front" },
+        { "id": "glimmer_moth", "row": "back" },
+        { "id": "echo_sprite", "row": "back" },
+        { "id": "doppel_jester", "row": "back" }
+      ],
+      "dust_reward": 120,
+      "required_cleared": ["trial_3"]
+    },
+    {
+      "id": "trial_5",
+      "name": "Iron Battalion",
+      "description": "Military formation — break their taunt wall.",
+      "enemy_squad": [
+        { "id": "scrap_sentinel", "row": "front" },
+        { "id": "iron_vanguard", "row": "front" },
+        { "id": "riot_shield_bot", "row": "front" },
+        { "id": "field_medic", "row": "back" },
+        { "id": "sergeant_sharpe", "row": "back" },
+        { "id": "rookie_trooper", "row": "back" }
+      ],
+      "dust_reward": 150,
+      "required_cleared": ["trial_4"]
+    }
+  ]
+}

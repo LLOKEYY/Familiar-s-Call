@@ -1,0 +1,109 @@
+{
+  "dust_reward": 150,
+  "easy_ritual": "win_2_battles",
+  "school_rotation": [
+  {
+    "id": "win_field_pyromancy",
+    "school": "pyromancy",
+    "label": "Field a Pyromancy familiar in a battle you win"
+  },
+  {
+    "id": "win_field_nature",
+    "school": "nature",
+    "label": "Field a Nature familiar in a battle you win"
+  },
+  {
+    "id": "win_field_necromancy",
+    "school": "necromancy",
+    "label": "Field a Necromancy familiar in a battle you win"
+  },
+  {
+    "id": "win_field_illusion",
+    "school": "illusion",
+    "label": "Field an Illusion familiar in a battle you win"
+  },
+  {
+    "id": "win_field_military",
+    "school": "military",
+    "label": "Field a Military Surplus familiar in a battle you win"
+  }
+  ],
+  "varied_pool": [
+    "win_taunt_familiar",
+    "win_no_losses",
+    "use_clash_ticket",
+    "win_clash",
+    "win_dual_synergy",
+    "open_page",
+    "level_up_familiar",
+    "win_with_burn",
+    "win_heal_lifesteal",
+    "win_death_trigger"
+  ],
+  "rituals": {
+    "win_2_battles": {
+      "label": "Win 2 battles",
+      "category": "battle"
+    },
+    "win_taunt_familiar": {
+      "label": "Win a battle using a Taunt familiar",
+      "category": "battle"
+    },
+    "win_no_losses": {
+      "label": "Win a battle without losing a familiar",
+      "category": "battle"
+    },
+    "use_clash_ticket": {
+      "label": "Use a Clash ticket",
+      "category": "battle"
+    },
+    "win_clash": {
+      "label": "Win a Clash battle",
+      "category": "battle"
+    },
+    "win_field_pyromancy": {
+      "label": "Field a Pyromancy familiar in a battle you win",
+      "category": "school"
+    },
+    "win_field_nature": {
+      "label": "Field a Nature familiar in a battle you win",
+      "category": "school"
+    },
+    "win_field_necromancy": {
+      "label": "Field a Necromancy familiar in a battle you win",
+      "category": "school"
+    },
+    "win_field_illusion": {
+      "label": "Field an Illusion familiar in a battle you win",
+      "category": "school"
+    },
+    "win_field_military": {
+      "label": "Field a Military Surplus familiar in a battle you win",
+      "category": "school"
+    },
+    "win_dual_synergy": {
+      "label": "Win a battle with a 2-School dual synergy active",
+      "category": "school"
+    },
+    "open_page": {
+      "label": "Open a page (any pack)",
+      "category": "economy"
+    },
+    "level_up_familiar": {
+      "label": "Level up a familiar",
+      "category": "economy"
+    },
+    "win_with_burn": {
+      "label": "Win a battle using a burn effect",
+      "category": "combat"
+    },
+    "win_heal_lifesteal": {
+      "label": "Win a battle using a healing or lifesteal effect",
+      "category": "combat"
+    },
+    "win_death_trigger": {
+      "label": "Win a battle where an enemy dies to a death-trigger",
+      "category": "combat"
+    }
+  }
+}

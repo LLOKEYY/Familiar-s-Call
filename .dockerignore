@@ -1,0 +1,11 @@
+.godot/
+**/.venv/
+**/__pycache__/
+**/*.pyc
+**/*.db
+.git/
+export/
+*.import
+.vscode/
+Thumbs.db
+.DS_Store

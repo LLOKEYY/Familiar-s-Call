@@ -1,0 +1,85 @@
+{
+  "season_id": "ember_court_s1",
+  "season_name": "Ember Court",
+  "season_subtitle": "Season I",
+  "premium_price": "$4.99",
+  "xp_per_win": 30,
+  "tier_xp": [0, 80, 170, 270, 380, 500, 630, 770, 920, 1080, 1250, 1430, 1620, 1820, 2040],
+  "tiers": [
+    {
+      "tier": 1,
+      "free": { "type": "dust", "amount": 50 },
+      "premium": { "type": "lumen", "amount": 25 }
+    },
+    {
+      "tier": 2,
+      "free": { "type": "page", "familiar_id": "fernling" },
+      "premium": { "type": "dust", "amount": 80 }
+    },
+    {
+      "tier": 3,
+      "free": { "type": "dust", "amount": 60 },
+      "premium": { "type": "page", "familiar_id": "flareling" }
+    },
+    {
+      "tier": 4,
+      "free": { "type": "lumen", "amount": 15 },
+      "premium": { "type": "lumen", "amount": 40 }
+    },
+    {
+      "tier": 5,
+      "free": { "type": "page", "familiar_id": "grimrat" },
+      "premium": { "type": "dust", "amount": 120 }
+    },
+    {
+      "tier": 6,
+      "free": { "type": "dust", "amount": 75 },
+      "premium": { "type": "page", "familiar_id": "echo_sprite" }
+    },
+    {
+      "tier": 7,
+      "free": { "type": "lumen", "amount": 20 },
+      "premium": { "type": "lumen", "amount": 50 }
+    },
+    {
+      "tier": 8,
+      "free": { "type": "dust", "amount": 90 },
+      "premium": { "type": "dust", "amount": 150 }
+    },
+    {
+      "tier": 9,
+      "free": { "type": "page", "familiar_id": "rookie_trooper" },
+      "premium": { "type": "page", "familiar_id": "scrap_sentinel" }
+    },
+    {
+      "tier": 10,
+      "free": { "type": "dust", "amount": 100 },
+      "premium": { "type": "lumen", "amount": 75 }
+    },
+    {
+      "tier": 11,
+      "free": { "type": "lumen", "amount": 25 },
+      "premium": { "type": "dust", "amount": 180 }
+    },
+    {
+      "tier": 12,
+      "free": { "type": "page", "familiar_id": "mirage_kit" },
+      "premium": { "type": "page", "familiar_id": "bonewisp" }
+    },
+    {
+      "tier": 13,
+      "free": { "type": "dust", "amount": 120 },
+      "premium": { "type": "lumen", "amount": 100 }
+    },
+    {
+      "tier": 14,
+      "free": { "type": "lumen", "amount": 35 },
+      "premium": { "type": "dust", "amount": 250 }
+    },
+    {
+      "tier": 15,
+      "free": { "type": "page", "familiar_id": "mosshollow_sprite" },
+      "premium": { "type": "promo_card", "familiar_id": "pyrehound_unbound" }
+    }
+  ]
+}

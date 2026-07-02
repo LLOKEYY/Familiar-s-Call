@@ -1,0 +1,22 @@
+{
+  "dual_threshold": 2,
+  "mono_school": {
+    "pyromancy": { "threshold": 2, "effect_id": "pyro_dmg_10pct", "name": "Pyromancy Discipline" },
+    "nature": { "threshold": 2, "effect_id": "nature_heal_10pct", "name": "Nature's Embrace" },
+    "necromancy": { "threshold": 2, "effect_id": "necro_lifesteal_5pct", "name": "Grave Pact" },
+    "illusion": { "threshold": 2, "effect_id": "illusion_dodge_5pct", "name": "Veil of Mist" },
+    "military": { "threshold": 2, "effect_id": "military_armor_10pct", "name": "Formation Drill" }
+  },
+  "dual_school": {
+    "pyromancy+nature": { "name": "Wildfire", "effect_id": "wildfire_shield" },
+    "pyromancy+necromancy": { "name": "Death Magic", "effect_id": "death_magic" },
+    "pyromancy+illusion": { "name": "Phantom Flame", "effect_id": "phantom_flame" },
+    "pyromancy+military": { "name": "Scorched Earth", "effect_id": "scorched_earth" },
+    "nature+necromancy": { "name": "Decay", "effect_id": "decay" },
+    "nature+illusion": { "name": "Feywild", "effect_id": "feywild" },
+    "nature+military": { "name": "Fortify", "effect_id": "fortify" },
+    "necromancy+illusion": { "name": "Grave Whispers", "effect_id": "grave_whispers" },
+    "necromancy+military": { "name": "Undying Ranks", "effect_id": "undying_ranks" },
+    "illusion+military": { "name": "Phantom Drill", "effect_id": "phantom_drill" }
+  }
+}

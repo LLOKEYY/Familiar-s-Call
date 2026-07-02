@@ -1,0 +1,410 @@
+{
+  "familiars": [
+    {
+      "id": "ember_pup",
+      "display_name": "Ember Pup",
+      "school": "pyromancy",
+      "secondary_school": "",
+      "rarity": "common",
+      "role": "damage",
+      "speed": 7, "hp": 60, "atk": 18,
+      "passive_id": "burn_on_attack_30",
+      "passive_text": "When this familiar attacks, 30% chance to burn the target (damage over 2 turns).",
+      "art_id": "ember_pup"
+    },
+    {
+      "id": "scorch_imp",
+      "display_name": "Scorch Imp",
+      "school": "pyromancy", "secondary_school": "",
+      "rarity": "common", "role": "damage",
+      "speed": 8, "hp": 35, "atk": 14,
+      "passive_id": "guaranteed_burn_first_attack",
+      "passive_text": "This familiar's first attack each battle is a guaranteed burn.",
+      "art_id": "scorch_imp"
+    },
+    {
+      "id": "flareling",
+      "display_name": "Flareling",
+      "school": "pyromancy", "secondary_school": "",
+      "rarity": "common", "role": "damage",
+      "speed": 8, "hp": 40, "atk": 16,
+      "passive_id": "slow_on_hit_20",
+      "passive_text": "20% chance on attack to reduce target's Speed by 1 for the rest of battle.",
+      "art_id": "flareling"
+    },
+    {
+      "id": "ashwing_bat",
+      "display_name": "Ashwing Bat",
+      "school": "pyromancy", "secondary_school": "",
+      "rarity": "common", "role": "disruptor",
+      "speed": 9, "hp": 35, "atk": 12,
+      "passive_id": "target_lowest_hp_first",
+      "passive_text": "First attack each battle always targets the lowest-HP enemy.",
+      "art_id": "ashwing_bat"
+    },
+    {
+      "id": "cinderwing_drake",
+      "display_name": "Cinderwing Drake",
+      "school": "pyromancy", "secondary_school": "",
+      "rarity": "rare", "role": "damage",
+      "speed": 5, "hp": 110, "atk": 32,
+      "passive_id": "aoe_backrow_on_entry",
+      "passive_text": "On entering battle, deals small AoE damage to the enemy back row.",
+      "art_id": "cinderwing_drake"
+    },
+    {
+      "id": "salamander_adept",
+      "display_name": "Salamander Adept",
+      "school": "pyromancy", "secondary_school": "",
+      "rarity": "rare", "role": "damage",
+      "speed": 6, "hp": 75, "atk": 24,
+      "passive_id": "burn_damage_boost_50",
+      "passive_text": "Burn damage from allied effects is increased by 50%.",
+      "art_id": "salamander_adept"
+    },
+    {
+      "id": "magmaforged_brute",
+      "display_name": "Magmaforged Brute",
+      "school": "pyromancy", "secondary_school": "",
+      "rarity": "epic", "role": "damage",
+      "speed": 4, "hp": 130, "atk": 30,
+      "passive_id": "execute_missing_hp_10",
+      "passive_text": "Takes 20% reduced damage from burn sources; deals bonus damage equal to 10% of target's missing HP.",
+      "art_id": "magmaforged_brute"
+    },
+    {
+      "id": "pyrehound_unbound",
+      "display_name": "Pyrehound, the Unbound",
+      "school": "pyromancy", "secondary_school": "",
+      "rarity": "legendary", "role": "damage",
+      "speed": 9, "hp": 140, "atk": 45,
+      "passive_id": "snowball_on_ally_pyro_death",
+      "passive_text": "Every time an allied Pyromancy familiar dies, this familiar gains permanent +15% ATK for the rest of the battle.",
+      "art_id": "pyrehound_unbound"
+    },
+
+    {
+      "id": "mosshollow_sprite",
+      "display_name": "Mosshollow Sprite",
+      "school": "nature", "secondary_school": "",
+      "rarity": "common", "role": "support",
+      "speed": 8, "hp": 50, "atk": 10,
+      "passive_id": "heal_lowest_hp_on_start",
+      "passive_text": "At the start of battle, heals the lowest-HP ally for a small amount.",
+      "art_id": "mosshollow_sprite"
+    },
+    {
+      "id": "fernling",
+      "display_name": "Fernling",
+      "school": "nature", "secondary_school": "",
+      "rarity": "common", "role": "support",
+      "speed": 7, "hp": 45, "atk": 8,
+      "passive_id": "heal_random_odd_rounds",
+      "passive_text": "At the start of each odd round, heals a random ally for a small amount.",
+      "art_id": "fernling"
+    },
+    {
+      "id": "bramble_hare",
+      "display_name": "Bramble Hare",
+      "school": "nature", "secondary_school": "",
+      "rarity": "common", "role": "damage",
+      "speed": 9, "hp": 40, "atk": 14,
+      "passive_id": "first_strike_fastest_bonus",
+      "passive_text": "Always attacks first regardless of Speed ties; deals bonus damage to the fastest enemy.",
+      "art_id": "bramble_hare"
+    },
+    {
+      "id": "pebblegrove_turtle",
+      "display_name": "Pebblegrove Turtle",
+      "school": "nature", "secondary_school": "",
+      "rarity": "common", "role": "tank",
+      "speed": 3, "hp": 90, "atk": 6,
+      "passive_id": "frontrow_damage_reduction_15",
+      "passive_text": "Takes 15% reduced damage while in the front row.",
+      "art_id": "pebblegrove_turtle"
+    },
+    {
+      "id": "thornback_stag",
+      "display_name": "Thornback Stag",
+      "school": "nature", "secondary_school": "",
+      "rarity": "rare", "role": "tank",
+      "speed": 4, "hp": 150, "atk": 20,
+      "passive_id": "taunt",
+      "passive_text": "Taunt — enemies must target this familiar first while it's alive.",
+      "art_id": "thornback_stag"
+    },
+    {
+      "id": "willowmend_druid",
+      "display_name": "Willowmend Druid",
+      "school": "nature", "secondary_school": "",
+      "rarity": "rare", "role": "support",
+      "speed": 6, "hp": 80, "atk": 14,
+      "passive_id": "heal_frontrow_every_2_rounds",
+      "passive_text": "Heals the front row for a moderate amount every 2 rounds.",
+      "art_id": "willowmend_druid"
+    },
+    {
+      "id": "elderroot_treant",
+      "display_name": "Elderroot Treant",
+      "school": "nature", "secondary_school": "",
+      "rarity": "epic", "role": "tank",
+      "speed": 2, "hp": 180, "atk": 18,
+      "passive_id": "taunt_growing_hp",
+      "passive_text": "Taunt. Gains +5% max HP for every ally that dies.",
+      "art_id": "elderroot_treant"
+    },
+    {
+      "id": "verdant_matriarch",
+      "display_name": "Verdant Matriarch",
+      "school": "nature", "secondary_school": "",
+      "rarity": "legendary", "role": "support",
+      "speed": 5, "hp": 150, "atk": 22,
+      "passive_id": "nature_lifesteal_aura_undying",
+      "passive_text": "All Nature allies heal 10% of damage they deal as HP; this familiar cannot drop below 1 HP more than once per battle.",
+      "art_id": "verdant_matriarch"
+    },
+
+    {
+      "id": "bonewisp",
+      "display_name": "Bonewisp",
+      "school": "necromancy", "secondary_school": "",
+      "rarity": "common", "role": "disruptor",
+      "speed": 6, "hp": 40, "atk": 22,
+      "passive_id": "death_burst_remaining_atk",
+      "passive_text": "When this familiar dies, deals its remaining ATK as damage to a random enemy.",
+      "art_id": "bonewisp"
+    },
+    {
+      "id": "grimrat",
+      "display_name": "Grimrat",
+      "school": "necromancy", "secondary_school": "",
+      "rarity": "common", "role": "damage",
+      "speed": 7, "hp": 35, "atk": 18,
+      "passive_id": "execute_below_50",
+      "passive_text": "Deals bonus damage to enemies below 50% HP.",
+      "art_id": "grimrat"
+    },
+    {
+      "id": "ashen_crow",
+      "display_name": "Ashen Crow",
+      "school": "necromancy", "secondary_school": "",
+      "rarity": "common", "role": "disruptor",
+      "speed": 8, "hp": 30, "atk": 12,
+      "passive_id": "death_weaken_atk_10",
+      "passive_text": "On death, reduces a random enemy's ATK by 10% for the rest of battle.",
+      "art_id": "ashen_crow"
+    },
+    {
+      "id": "crypt_acolyte",
+      "display_name": "Crypt Acolyte",
+      "school": "necromancy", "secondary_school": "",
+      "rarity": "common", "role": "support",
+      "speed": 6, "hp": 45, "atk": 10,
+      "passive_id": "lifesteal_self_and_adjacent_15",
+      "passive_text": "Heals self and adjacent Necromancy ally for 15% of damage dealt.",
+      "art_id": "crypt_acolyte"
+    },
+    {
+      "id": "hollow_acolyte",
+      "display_name": "Hollow Acolyte",
+      "school": "necromancy", "secondary_school": "",
+      "rarity": "rare", "role": "support",
+      "speed": 5, "hp": 65, "atk": 20,
+      "passive_id": "necro_lifesteal_aura_10",
+      "passive_text": "Allied Necromancy familiars gain 10% lifesteal.",
+      "art_id": "hollow_acolyte"
+    },
+    {
+      "id": "wraithling_swarm",
+      "display_name": "Wraithling Swarm",
+      "school": "necromancy", "secondary_school": "",
+      "rarity": "rare", "role": "damage",
+      "speed": 7, "hp": 70, "atk": 20,
+      "passive_id": "double_attack_half_damage",
+      "passive_text": "Attacks twice per turn for half damage each.",
+      "art_id": "wraithling_swarm"
+    },
+    {
+      "id": "graveheart_wraith",
+      "display_name": "Graveheart Wraith",
+      "school": "necromancy", "secondary_school": "",
+      "rarity": "epic", "role": "support",
+      "speed": 6, "hp": 90, "atk": 28,
+      "passive_id": "lifesteal_30",
+      "passive_text": "Drains HP equal to 30% of damage dealt and heals itself.",
+      "art_id": "graveheart_wraith"
+    },
+    {
+      "id": "lichqueen_morwen",
+      "display_name": "Lichqueen Morwen",
+      "school": "necromancy", "secondary_school": "",
+      "rarity": "legendary", "role": "support",
+      "speed": 6, "hp": 120, "atk": 30,
+      "passive_id": "snowball_heal_on_any_ally_death",
+      "passive_text": "When any allied familiar dies, this familiar heals 20% max HP and gains +5% ATK permanently.",
+      "art_id": "lichqueen_morwen"
+    },
+
+    {
+      "id": "mirage_kit",
+      "display_name": "Mirage Kit",
+      "school": "illusion", "secondary_school": "",
+      "rarity": "common", "role": "disruptor",
+      "speed": 9, "hp": 45, "atk": 15,
+      "passive_id": "dodge_25",
+      "passive_text": "25% chance to dodge any incoming attack entirely.",
+      "art_id": "mirage_kit"
+    },
+    {
+      "id": "glimmer_moth",
+      "display_name": "Glimmer Moth",
+      "school": "illusion", "secondary_school": "",
+      "rarity": "common", "role": "disruptor",
+      "speed": 9, "hp": 30, "atk": 10,
+      "passive_id": "accuracy_debuff_on_entry",
+      "passive_text": "On entering battle, reduces a random enemy's accuracy by 15% for 2 rounds.",
+      "art_id": "glimmer_moth"
+    },
+    {
+      "id": "echo_sprite",
+      "display_name": "Echo Sprite",
+      "school": "illusion", "secondary_school": "",
+      "rarity": "common", "role": "damage",
+      "speed": 8, "hp": 35, "atk": 16,
+      "passive_id": "repeat_attack_20",
+      "passive_text": "20% chance to repeat its attack against the same target.",
+      "art_id": "echo_sprite"
+    },
+    {
+      "id": "fogveil_cat",
+      "display_name": "Fogveil Cat",
+      "school": "illusion", "secondary_school": "",
+      "rarity": "common", "role": "disruptor",
+      "speed": 9, "hp": 35, "atk": 12,
+      "passive_id": "dodge_while_above_half_20",
+      "passive_text": "While above 50% HP, has 20% dodge chance.",
+      "art_id": "fogveil_cat"
+    },
+    {
+      "id": "prism_fox",
+      "display_name": "Prism Fox",
+      "school": "illusion", "secondary_school": "",
+      "rarity": "rare", "role": "damage",
+      "speed": 8, "hp": 65, "atk": 26,
+      "passive_id": "bounce_attack_50pct",
+      "passive_text": "Attacks bounce to a second random enemy for 50% damage.",
+      "art_id": "prism_fox"
+    },
+    {
+      "id": "doppel_jester",
+      "display_name": "Doppel Jester",
+      "school": "illusion", "secondary_school": "",
+      "rarity": "rare", "role": "disruptor",
+      "speed": 7, "hp": 75, "atk": 18,
+      "passive_id": "confuse_skip_turn",
+      "passive_text": "On entering battle, confuses a random enemy, causing it to skip its next turn.",
+      "art_id": "doppel_jester"
+    },
+    {
+      "id": "mirrorwing_owl",
+      "display_name": "Mirrorwing Owl",
+      "school": "illusion", "secondary_school": "",
+      "rarity": "epic", "role": "disruptor",
+      "speed": 8, "hp": 85, "atk": 22,
+      "passive_id": "reflect_damage_25",
+      "passive_text": "Reflects 25% of damage taken back to the attacker.",
+      "art_id": "mirrorwing_owl"
+    },
+    {
+      "id": "veil_sister",
+      "display_name": "Veil Sister",
+      "school": "illusion", "secondary_school": "",
+      "rarity": "legendary", "role": "disruptor",
+      "speed": 7, "hp": 80, "atk": 25,
+      "passive_id": "swap_enemy_row_on_start",
+      "passive_text": "At the start of battle, swaps a random enemy familiar from front row to back row (and vice versa).",
+      "art_id": "veil_sister"
+    },
+
+    {
+      "id": "scrap_sentinel",
+      "display_name": "Scrap Sentinel",
+      "school": "military", "secondary_school": "",
+      "rarity": "common", "role": "tank",
+      "speed": 4, "hp": 85, "atk": 10,
+      "passive_id": "taunt_frontrow_only",
+      "passive_text": "Taunt while in the front row.",
+      "art_id": "scrap_sentinel"
+    },
+    {
+      "id": "rookie_trooper",
+      "display_name": "Rookie Trooper",
+      "school": "military", "secondary_school": "",
+      "rarity": "common", "role": "damage",
+      "speed": 6, "hp": 55, "atk": 18,
+      "passive_id": "dmg_boost_while_tank_alive_10",
+      "passive_text": "Deals +10% damage while an allied Tank-role familiar is alive.",
+      "art_id": "rookie_trooper"
+    },
+    {
+      "id": "field_medic",
+      "display_name": "Field Medic",
+      "school": "military", "secondary_school": "",
+      "rarity": "common", "role": "support",
+      "speed": 6, "hp": 50, "atk": 8,
+      "passive_id": "heal_frontrow_5pct_per_round",
+      "passive_text": "Heals the front row 5% max HP each round.",
+      "art_id": "field_medic"
+    },
+    {
+      "id": "riot_shield_bot",
+      "display_name": "Riot Shield Bot",
+      "school": "military", "secondary_school": "",
+      "rarity": "common", "role": "tank",
+      "speed": 3, "hp": 100, "atk": 8,
+      "passive_id": "backrow_damage_reduction_10",
+      "passive_text": "Reduces damage taken by allies behind it by 10%.",
+      "art_id": "riot_shield_bot"
+    },
+    {
+      "id": "iron_vanguard",
+      "display_name": "Iron Vanguard",
+      "school": "military", "secondary_school": "",
+      "rarity": "rare", "role": "tank",
+      "speed": 5, "hp": 140, "atk": 20,
+      "passive_id": "taunt_stacking_armor",
+      "passive_text": "Taunt. Gains armor (15% damage reduction) for each round survived, up to 3 stacks.",
+      "art_id": "iron_vanguard"
+    },
+    {
+      "id": "sergeant_sharpe",
+      "display_name": "Sergeant Sharpe",
+      "school": "military", "secondary_school": "",
+      "rarity": "rare", "role": "damage",
+      "speed": 7, "hp": 80, "atk": 28,
+      "passive_id": "bonus_dmg_vs_taunt_15",
+      "passive_text": "+15% damage against Taunt familiars.",
+      "art_id": "sergeant_sharpe"
+    },
+    {
+      "id": "siege_walker",
+      "display_name": "Siege Walker",
+      "school": "military", "secondary_school": "",
+      "rarity": "epic", "role": "tank",
+      "speed": 4, "hp": 150, "atk": 32,
+      "passive_id": "splash_adjacent_on_attack",
+      "passive_text": "Deals splash damage to adjacent enemies on every attack.",
+      "art_id": "siege_walker"
+    },
+    {
+      "id": "general_ironclad",
+      "display_name": "General Ironclad",
+      "school": "military", "secondary_school": "",
+      "rarity": "legendary", "role": "support",
+      "speed": 5, "hp": 160, "atk": 24,
+      "passive_id": "military_aura_armor_target_reduction",
+      "passive_text": "All allied Military Surplus familiars gain reduced targeting priority and +10% armor.",
+      "art_id": "general_ironclad"
+    }
+  ]
+}

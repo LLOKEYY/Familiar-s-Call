@@ -1,0 +1,25 @@
+{
+  "starting_dust": 600,
+  "starting_lumen": 50,
+  "daily_dust_reward": 100,
+  "daily_ritual_dust_reward": 150,
+  "battle_dust_reward": 40,
+  "rift_clear_dust": 80,
+  "packs": {
+    "common_page": {
+      "cost_currency": "dust",
+      "cost": 300,
+      "odds": { "common": 90, "rare": 9, "epic": 1, "legendary": 0 }
+    },
+    "sealed_tome": {
+      "cost_currency": "lumen",
+      "cost": 150,
+      "odds": { "common": 60, "rare": 28, "epic": 10, "legendary": 2 }
+    }
+  },
+  "pity": {
+    "epic_within": 20,
+    "legendary_within": 60
+  },
+  "daily_free_page": true
+}

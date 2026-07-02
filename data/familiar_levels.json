@@ -1,0 +1,11 @@
+{
+  "max_level": 5,
+  "dupe_thresholds": [5, 10, 20, 30],
+  "stat_bonus_per_level": 0.1,
+  "dust_per_dupe": {
+    "common": 10,
+    "rare": 25,
+    "epic": 50,
+    "legendary": 50
+  }
+}
