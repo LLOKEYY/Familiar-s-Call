@@ -1,6 +1,7 @@
 extends Control
 
 const MAIN_MENU := "res://scenes/main_menu/main_menu.tscn"
+const BOOTSTRAP := "res://scenes/bootstrap/bootstrap.tscn"
 const MARGIN_X := 16
 const MARGIN_Y := 12
 const APP_VERSION := "v0.1.0"
@@ -86,7 +87,12 @@ func _build_header() -> HBoxContainer:
 	back.text = "←"
 	back.custom_minimum_size = Vector2(36, 36)
 	UITheme.style_icon_button(back)
-	back.pressed.connect(func(): get_tree().change_scene_to_file(MAIN_MENU))
+	back.pressed.connect(func() -> void:
+		if OnlineGate.requires_online() and not OnlineGate.can_play():
+			get_tree().change_scene_to_file(BOOTSTRAP)
+		else:
+			get_tree().change_scene_to_file(MAIN_MENU)
+	)
 	row.add_child(back)
 
 	var title := Label.new()

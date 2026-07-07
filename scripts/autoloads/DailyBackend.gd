@@ -14,9 +14,24 @@ var last_sync_url: String = ""
 
 func _ready() -> void:
 	_http = HTTPRequest.new()
-	_http.timeout = REQUEST_TIMEOUT_SEC
+	_prepare_http(_http)
 	add_child(_http)
 	_http.request_completed.connect(_on_request_completed)
+
+
+func _prepare_http(http: HTTPRequest) -> void:
+	http.timeout = REQUEST_TIMEOUT_SEC
+	http.set_tls_options(TLSOptions.client())
+
+
+func _request_get(http: HTTPRequest, url: String, headers: PackedStringArray) -> void:
+	add_child(http)
+	http.call_deferred("request", url, headers, HTTPClient.METHOD_GET)
+
+
+func _request_post(http: HTTPRequest, url: String, headers: PackedStringArray, body: String) -> void:
+	add_child(http)
+	http.call_deferred("request", url, headers, HTTPClient.METHOD_POST, body)
 
 
 func is_enabled() -> bool:
@@ -83,21 +98,28 @@ func ping_health(callback: Callable = Callable()) -> void:
 		callback.call({"ok": false, "error": "Supabase not configured"})
 		return
 	var http := HTTPRequest.new()
-	http.timeout = REQUEST_TIMEOUT_SEC
-	add_child(http)
+	_prepare_http(http)
 	var url := "%s/auth/v1/health" % _supabase_url()
 	http.request_completed.connect(func(result: int, response_code: int, _h: PackedStringArray, body: PackedByteArray) -> void:
 		http.queue_free()
 		var ok := result == HTTPRequest.RESULT_SUCCESS and response_code == 200
+		var err := ""
+		if not ok:
+			if result != HTTPRequest.RESULT_SUCCESS:
+				err = _describe_http_result(result, url)
+			elif response_code == 0:
+				err = "No response from %s — use Project URL (not /rest/v1/) and check internet" % url
+			else:
+				err = "HTTP %d from %s" % [response_code, url]
 		callback.call({
 			"ok": ok,
 			"status": response_code,
 			"body": body.get_string_from_utf8(),
-			"error": "Network error" if result != HTTPRequest.RESULT_SUCCESS else "HTTP %d" % response_code,
+			"error": err,
 		})
 	)
 	var headers := _api_headers("")
-	http.request(url, headers, HTTPClient.METHOD_GET)
+	_request_get(http, url, headers)
 
 
 func force_offline() -> void:
@@ -159,6 +181,10 @@ func _pump_queue() -> void:
 	headers.append("X-Display-Name: %s" % GameState.display_name.strip_edges())
 	job["_callback"] = job.get("callback", Callable())
 	_http.set_meta("job", job)
+	call_deferred("_deferred_main_request", url, headers, payload, job)
+
+
+func _deferred_main_request(url: String, headers: PackedStringArray, payload: String, job: Dictionary) -> void:
 	var request_err := _http.request(url, headers, HTTPClient.METHOD_POST, payload)
 	if request_err != OK:
 		_finish_job(job, {
@@ -171,8 +197,7 @@ func _pump_queue() -> void:
 func _sign_in_anonymous(callback: Callable) -> void:
 	_auth_busy = true
 	var http := HTTPRequest.new()
-	http.timeout = REQUEST_TIMEOUT_SEC
-	add_child(http)
+	_prepare_http(http)
 	var url := "%s/auth/v1/signup" % _supabase_url()
 	var headers := _api_headers("")
 	http.request_completed.connect(func(result: int, code: int, _h: PackedStringArray, body: PackedByteArray) -> void:
@@ -188,14 +213,13 @@ func _sign_in_anonymous(callback: Callable) -> void:
 		if callback.is_valid():
 			callback.call(true)
 	)
-	http.request(url, headers, HTTPClient.METHOD_POST, "{}")
+	_request_post(http, url, headers, "{}")
 
 
 func _refresh_session(callback: Callable) -> void:
 	_auth_busy = true
 	var http := HTTPRequest.new()
-	http.timeout = REQUEST_TIMEOUT_SEC
-	add_child(http)
+	_prepare_http(http)
 	var url := "%s/auth/v1/token?grant_type=refresh_token" % _supabase_url()
 	var headers := _api_headers("")
 	var payload := JSON.stringify({
@@ -213,7 +237,7 @@ func _refresh_session(callback: Callable) -> void:
 		if callback.is_valid():
 			callback.call(true)
 	)
-	http.request(url, headers, HTTPClient.METHOD_POST, payload)
+	_request_post(http, url, headers, payload)
 
 
 func _apply_auth_response(parsed: Dictionary) -> void:
@@ -310,10 +334,7 @@ func _api_headers(access_token: String) -> PackedStringArray:
 
 
 func _supabase_url() -> String:
-	var url := str(DataLoader.backend_config.get("supabase_url", "")).strip_edges()
-	while url.ends_with("/"):
-		url = url.substr(0, url.length() - 1)
-	return url
+	return DataLoader.normalize_supabase_url(str(DataLoader.backend_config.get("supabase_url", "")))
 
 
 func _anon_key() -> String:
@@ -331,12 +352,27 @@ func _parse_json(body: PackedByteArray) -> Dictionary:
 
 
 func _auth_error_message(parsed: Dictionary, code: int, raw: String) -> String:
+	var error_code := str(parsed.get("error_code", parsed.get("code", ""))).strip_edges()
 	var msg := str(parsed.get("msg", parsed.get("error_description", parsed.get("error", "")))).strip_edges()
 	if msg.is_empty():
 		msg = raw.substr(0, 200) if not raw.is_empty() else "HTTP %d" % code
-	if msg.contains("anonymous") or code == 422:
-		return "%s — enable Anonymous sign-ins in Supabase Auth settings" % msg
+	var project_hint := _project_ref_hint()
+	if error_code == "anonymous_provider_disabled" or msg.to_lower().contains("anonymous"):
+		return "%s — Enable Anonymous sign-ins on project %s: Dashboard → Authentication → Sign In / Providers → Anonymous → Save. URL and API key must be from that same project." % [msg, project_hint]
+	if code == 422 and msg.to_lower().contains("sign"):
+		return "%s — Check Auth settings for project %s." % [msg, project_hint]
 	return msg
+
+
+func _project_ref_hint() -> String:
+	var url := _supabase_url()
+	if url.is_empty():
+		return "(unknown project)"
+	var host := url.replace("https://", "").replace("http://", "")
+	var dot := host.find(".")
+	if dot > 0:
+		return host.substr(0, dot)
+	return host
 
 
 func _describe_http_result(result: int, url: String) -> String:
@@ -363,6 +399,8 @@ func _format_http_error(parsed: Dictionary, response_code: int, body_text: Strin
 	if message.is_empty():
 		var trimmed := body_text.strip_edges()
 		if trimmed.is_empty():
+			if response_code == 0:
+				return "No response from server — check Supabase URL and internet"
 			return "HTTP %d" % response_code
 		return "HTTP %d: %s" % [response_code, trimmed.substr(0, 160)]
 	return "HTTP %d: %s" % [response_code, message]

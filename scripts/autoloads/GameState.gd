@@ -370,6 +370,8 @@ func clear_supabase_session() -> void:
 
 
 func daily_rewards_available() -> bool:
+	if OnlineGate.requires_online():
+		return daily_server_online
 	if not DailyBackend.uses_server_dailies():
 		return true
 	return daily_server_online

@@ -1,5 +1,6 @@
 {
-  "enabled": false,
+  "enabled": true,
+  "require_online": true,
   "supabase_url": "",
   "supabase_anon_key": ""
 }

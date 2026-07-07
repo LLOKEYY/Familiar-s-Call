@@ -29,6 +29,7 @@ GameState="*res://scripts/autoloads/GameState.gd"
 SaveManager="*res://scripts/autoloads/SaveManager.gd"
 EconomyManager="*res://scripts/autoloads/EconomyManager.gd"
 DailyBackend="*res://scripts/autoloads/DailyBackend.gd"
+OnlineGate="*res://scripts/autoloads/OnlineGate.gd"
 DailyRituals="*res://scripts/autoloads/DailyRituals.gd"
 
 [display]
@@ -38,6 +39,10 @@ window/size/viewport_height=932
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[network]
+
+tls/enable_tls_v1.3=false
 
 [rendering]
 

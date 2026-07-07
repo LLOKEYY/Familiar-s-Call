@@ -11,6 +11,10 @@ const SCENES := {
 	"account": "res://scenes/account/account.tscn",
 }
 
+const PLAY_SCENES := ["squad", "rift", "pack", "grimoire", "shop", "battle_pass"]
+
+var _offline_banner: Label
+
 var _dust_label: Label
 var _lumen_label: Label
 var _ritual_progress_label: Label
@@ -31,9 +35,14 @@ func _ready() -> void:
 	GameState.profile_changed.connect(_refresh_player_name)
 	DailyBackend.sync_completed.connect(func(_success: bool) -> void:
 		call_deferred("_refresh_all")
+		call_deferred("_refresh_offline_banner")
+	)
+	OnlineGate.connection_changed.connect(func(_online: bool) -> void:
+		call_deferred("_refresh_offline_banner")
 	)
 	get_viewport().size_changed.connect(_on_viewport_resized)
 	_refresh_all()
+	_refresh_offline_banner()
 	call_deferred("_on_viewport_resized")
 
 
@@ -65,6 +74,8 @@ func _build_ui() -> void:
 	_scroll.add_child(_content_root)
 
 	_content_root.add_child(_build_top_bar())
+	_offline_banner = _build_offline_banner()
+	_content_root.add_child(_offline_banner)
 	_content_root.add_child(_build_header_card())
 	_content_root.add_child(_build_todays_page_card())
 	_content_root.add_child(_build_rituals_card())
@@ -478,12 +489,41 @@ func _add_ritual_row(text: String, done: bool, reward: int = 150) -> void:
 	_ritual_list.add_child(row)
 
 
+func _build_offline_banner() -> Label:
+	var lbl := Label.new()
+	lbl.visible = false
+	lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lbl.add_theme_font_size_override("font_size", 12)
+	lbl.add_theme_color_override("font_color", Color(0.92, 0.45, 0.32))
+	return lbl
+
+
+func _refresh_offline_banner() -> void:
+	if _offline_banner == null:
+		return
+	if OnlineGate.can_play():
+		_offline_banner.visible = false
+		return
+	_offline_banner.visible = true
+	var msg := OnlineGate.status_message.strip_edges()
+	if msg.is_empty():
+		msg = "Offline — reconnect to play."
+	_offline_banner.text = msg
+
+
 func _go(key: String) -> void:
+	if key in PLAY_SCENES and not OnlineGate.can_play():
+		_refresh_offline_banner()
+		return
 	if SCENES.has(key):
 		get_tree().change_scene_to_file(SCENES[key])
 
 
 func _claim_free_page() -> void:
+	if not OnlineGate.can_play():
+		_refresh_offline_banner()
+		return
 	if DailyBackend.uses_server_dailies() and not GameState.daily_rewards_available():
 		return
 	if GameState.daily_free_page_claimed:

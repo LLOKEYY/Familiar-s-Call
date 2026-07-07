@@ -39,9 +39,7 @@ func set_dev_backend_enabled(enabled: bool) -> void:
 
 
 func set_dev_supabase_url(url: String) -> void:
-	var trimmed := url.strip_edges()
-	while trimmed.ends_with("/"):
-		trimmed = trimmed.substr(0, trimmed.length() - 1)
+	var trimmed := normalize_supabase_url(url)
 	if trimmed.is_empty():
 		return
 	backend_config["supabase_url"] = trimmed
@@ -71,10 +69,10 @@ func _merge_dev_backend_config() -> void:
 		return
 	if dev.has("enabled"):
 		backend_config["enabled"] = bool(dev["enabled"])
+	if dev.has("require_online"):
+		backend_config["require_online"] = bool(dev["require_online"])
 	if dev.has("supabase_url"):
-		var url := str(dev["supabase_url"]).strip_edges()
-		while url.ends_with("/"):
-			url = url.substr(0, url.length() - 1)
+		var url := normalize_supabase_url(str(dev["supabase_url"]))
 		if not url.is_empty():
 			backend_config["supabase_url"] = url
 	if dev.has("supabase_anon_key"):
@@ -106,6 +104,19 @@ func _save_user_json(path: String, data: Dictionary) -> void:
 		push_error("Failed to write: %s" % path)
 		return
 	file.store_string(JSON.stringify(data, "\t"))
+
+
+func normalize_supabase_url(url: String) -> String:
+	var trimmed := url.strip_edges()
+	while trimmed.ends_with("/"):
+		trimmed = trimmed.substr(0, trimmed.length() - 1)
+	if trimmed.ends_with("/rest/v1"):
+		trimmed = trimmed.substr(0, trimmed.length() - "/rest/v1".length())
+		while trimmed.ends_with("/"):
+			trimmed = trimmed.substr(0, trimmed.length() - 1)
+	if not trimmed.is_empty() and not trimmed.begins_with("http://") and not trimmed.begins_with("https://"):
+		trimmed = "https://%s" % trimmed
+	return trimmed
 
 
 func _load_familiars() -> void:

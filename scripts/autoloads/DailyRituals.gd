@@ -14,16 +14,18 @@ func _ready() -> void:
 
 
 func ensure_today() -> void:
-	if DailyBackend.uses_server_dailies():
+	if OnlineGate.requires_online() or DailyBackend.uses_server_dailies():
 		DailyBackend.request_sync()
 		return
 	_ensure_today_local()
 
 
 func get_display_list() -> Array:
+	if OnlineGate.requires_online() and not GameState.daily_server_online:
+		return _display_list_from_cache()
 	if DailyBackend.uses_server_dailies() and not GameState.daily_server_online:
 		return _display_list_from_cache()
-	if not DailyBackend.uses_server_dailies():
+	if not DailyBackend.uses_server_dailies() and not OnlineGate.requires_online():
 		_ensure_today_local()
 	var reward := dust_reward()
 	var result: Array = []

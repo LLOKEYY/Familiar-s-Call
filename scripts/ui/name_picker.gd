@@ -134,6 +134,18 @@ func _on_continue() -> void:
 	if not result.get("ok", false):
 		_show_error(str(result.get("message", "Invalid name.")))
 		return
+	if OnlineGate.requires_online():
+		_continue_btn.disabled = true
+		_continue_btn.text = "Connecting…"
+		OnlineGate.refresh(func(ok: bool) -> void:
+			_continue_btn.disabled = false
+			_continue_btn.text = "Begin"
+			if ok:
+				get_tree().change_scene_to_file(MAIN_MENU)
+			else:
+				_show_error(OnlineGate.status_message if not OnlineGate.status_message.is_empty() else "Connection required to play.")
+		)
+		return
 	get_tree().change_scene_to_file(MAIN_MENU)
 
 

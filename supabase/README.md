@@ -26,9 +26,23 @@ The legacy Python server in `server/` is **deprecated** — use this instead.
 
 Without this, the game cannot sign players in.
 
+**Supabase will warn:** *“Anonymous users will use the authenticated role.”* That is expected. This project is configured so anonymous players:
+
+| Access | Allowed? |
+|--------|----------|
+| Read **own** `profiles` / `daily_state` row | Yes (RLS: `auth.uid() = user_id`) |
+| Read **other** players’ data | No |
+| Insert/update/delete tables directly from the client | No (no write policies; grants revoked) |
+| Change dailies, claim pack, complete rituals | Only via the **`daily` Edge Function** (service role) |
+
+After enabling anonymous sign-ins, run **both** migrations (or `supabase db push`):
+
+1. `20250702000000_daily_schema.sql`
+2. `20250702000001_harden_rls_anonymous.sql` — revokes client write grants
+
 ### 3. Run the database migration
 
-**SQL Editor → New query** → paste `supabase/migrations/20250702000000_daily_schema.sql` → **Run**
+**SQL Editor → New query** → paste and run each file in `supabase/migrations/` **in order** → **Run**
 
 Or with the [Supabase CLI](https://supabase.com/docs/guides/cli):
 
@@ -40,11 +54,35 @@ supabase db push
 
 ### 4. Deploy the Edge Function
 
-Install the CLI, then from the **project root**:
+**Option A — double-click (Windows)**
 
-```bash
-supabase functions deploy daily --project-ref YOUR_PROJECT_REF
 ```
+supabase\deploy.bat
+```
+
+First time only, it will ask you to run `npx supabase login` and link your project.
+
+**Option B — terminal**
+
+PowerShell blocks `npx` by default on Windows. Use **`npx.cmd`** instead, or open **cmd.exe** (not PowerShell):
+
+```cmd
+cd /d C:\Users\dioni\Documents\FAMILI~1
+npx.cmd supabase login
+npx.cmd supabase link --project-ref YOUR_PROJECT_REF
+npx.cmd supabase db push
+npx.cmd supabase functions deploy daily
+```
+
+`YOUR_PROJECT_REF` = Dashboard → **Settings → General → Reference ID** (20 characters).
+
+To fix PowerShell permanently (optional): `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+
+**Option C — Supabase Dashboard (no CLI)**
+
+1. **Edge Functions → Create function** → name: `daily`
+2. Paste code from `supabase/functions/daily/index.ts` and shared files from `supabase/functions/_shared/`
+3. Deploy from the dashboard UI
 
 The function uses `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY` automatically in production.
 
